@@ -28,6 +28,10 @@ router.get('/tables', function(req, res) {
 	res.render('tables');
 });  
 
+router.get('/find', function(req, res) {
+	res.render('find');
+});  
+
 app.use(router);
 
 app.listen(80);
