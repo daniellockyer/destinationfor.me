@@ -7,7 +7,7 @@
                 <br /><br /><br />
                  <div class="col-lg-8 col-lg-offset-2">
                     <div class="input-group">
-                      <input type="text" id="search" class="form-control" placeholder="Search for...">
+                      <input type="text" id="search" class="form-control" placeholder="I want to be a...">
                       <span class="input-group-btn">
                         <button class="btn btn-default" id="go" type="button">Go</button>
                       </span>
@@ -22,17 +22,34 @@
     </header>
 
     <script>
-      var arrs = ["bg1.jpg","bg2.jpg","bg3.jpg","bg4.jpg"];
+      $("#go").click(function() { window.location.replace("/people");});
+      $("#unsure").click(function() { window.location.replace("/find");});
+      $("h1").fitText(1.2, { minFontSize: '35px', maxFontSize: '65px' });
 
-      $("#go").click(function() {
-        window.location.replace("/people");
+      var substringMatcher = function(strs) {
+        return function findMatches(q, cb) {
+          var matches = [];
+          var substrRegex = new RegExp(q, 'i');
+          $.each(strs, function(i, str) {
+            if (substrRegex.test(str)) matches.push(str);
+          });
+          cb(matches);
+        };
+      };
+       
+      var states = [<% data.forEach(function(d) { %>
+                      '<%= d %>',
+                    <% }); %>];
+       
+      $('#search').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+      }, {
+        name: 'states',
+        source: substringMatcher(states)
       });
 
-      $("h1").fitText(
-        1.2, {
-            minFontSize: '35px',
-            maxFontSize: '65px'
-      });
     </script>
 
 <%- include part/footer.ejs %>

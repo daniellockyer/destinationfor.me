@@ -1,0 +1,11 @@
+<%- include part/header.ejs %>
+
+<div class="inner">
+
+<% data.forEach(function(d) { %>
+    <h3><a href="/uni/<%= d.id %>"><%= d.title %></a></h3>
+<% }); %>
+
+</div>
+    
+<%- include part/footer.ejs %>

@@ -6,10 +6,10 @@
     <img src="/img/uos.jpg">
 
     <div class="header-text">
-    <span><strong>University of Southampton<strong></span>
-    <span><h2>Attended by 24,000 students</h2></span>
-    <span><h2>Some other interesting statistic.</h2></span>
-    <span><h2>And again.</h2></span>
+        <span><strong><%= data.title %><strong></span>
+        <span><h2>Attended by X students</h2></span>
+        <span><h2>Some other interesting statistic.</h2></span>
+        <span><h2>And again.</h2></span>
     </div>
 
 	</div>
@@ -26,7 +26,7 @@
       width="100%"
       height="450"
       frameborder="0" style="border:0"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAI7EDGxTaySYGletZXF92egISp974d5nM&q=University+of+Southampton,+UK">
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAI7EDGxTaySYGletZXF92egISp974d5nM&q=<%= data.title %>,+UK">
     </iframe>
     </div>
 
