@@ -7,4 +7,4 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 require('./routes.js')(express, app);
-app.listen(8080);
+app.listen(80);
