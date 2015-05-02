@@ -9,5 +9,13 @@ module.exports = function(express, app) {
     res.render('uni', { id: req.params.id });
   });
 
+  router.get('/people', function(req, res) {
+  	res.render('people');
+  });
+
+  router.get('/add', function(req, res) {
+    res.render('add');
+  });  
+
   app.use(router);
 }
