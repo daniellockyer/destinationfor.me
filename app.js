@@ -21,7 +21,11 @@ router.get('/people', function(req, res) {
 });
 
 router.get('/add', function(req, res) {
-res.render('add');
+	res.render('add');
+});  
+
+router.get('/tables', function(req, res) {
+	res.render('tables');
 });  
 
 app.use(router);

@@ -7,15 +7,15 @@
                 <br /><br /><br />
                  <div class="col-lg-8 col-lg-offset-2">
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search for...">
+                      <input type="text" id="search" class="form-control" placeholder="Search for...">
                       <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go</button>
+                        <button class="btn btn-default" id="go" type="button">Go</button>
                       </span>
                     </div>
                   </div>
                   <br/><br/><br/>
                   <div>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll" id="unsure">Unsure about what you want to be?</a>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll" id="unsure" style="font-size:18px;">Unsure about what you want to be?</a>
                 </div>
             </div>
         </div>
@@ -24,7 +24,15 @@
     <script>
       var arrs = ["bg1.jpg","bg2.jpg","bg3.jpg","bg4.jpg"];
 
-      
+      $("#go").click(function() {
+        window.location.replace("/people");
+      });
+
+      $("h1").fitText(
+        1.2, {
+            minFontSize: '35px',
+            maxFontSize: '65px'
+      });
     </script>
 
 <%- include part/footer.ejs %>
