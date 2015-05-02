@@ -963,7 +963,6 @@ public class Jobs {
                     "Unix Engineer",
                     "Urologist",
                     "Utilities",
-                    "Undergraduate",
                     "VP Operations",
                     "VP Business Development",
                     "Visual",

@@ -4,14 +4,13 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 
 public class CVParser {
     int age;
-    List<String> universities;
-    List<String> courseName;
-    List<String> jobTitle;
+    HashSet<String> universities;
+    HashSet<String> courseName;
+    HashSet<String> jobTitle;
 
     public static void main(String args[]) throws IOException {
         String fileLocation = args[0];
@@ -38,8 +37,8 @@ public class CVParser {
         System.out.println(jobTitle);
     }
 
-    public List<String> getUniversities(String[] paragraphs) {
-        List<String> universities = new ArrayList<>();
+    public HashSet<String> getUniversities(String[] paragraphs) {
+        HashSet<String> universities = new HashSet<>();
 
         for (String paragraph : paragraphs) {
             if (paragraph.toLowerCase().contains("college") || paragraph.toLowerCase().contains("uni")) {
@@ -58,11 +57,12 @@ public class CVParser {
         return universities;
     }
 
-    public List<String> getCourses(String[] paragraphs) {
-        List<String> courses = new ArrayList<>();
+    public HashSet<String> getCourses(String[] paragraphs) {
+        HashSet<String> courses = new HashSet<>();
 
         for (String course : Courses.COURSES) {
             for (String paragraph : paragraphs) {
+
                 if (paragraph.toLowerCase().contains(course.toLowerCase())) {
                     courses.add(course);
                 }
@@ -72,8 +72,8 @@ public class CVParser {
         return courses;
     }
 
-    public List<String> getJobs(String[] paragraphs) {
-        List<String> jobs = new ArrayList<>();
+    public HashSet<String> getJobs(String[] paragraphs) {
+        HashSet<String> jobs = new HashSet<>();
 
         for (String paragraph : paragraphs) {
             String[] lines = paragraph.split("\n");
