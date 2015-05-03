@@ -1,0 +1,71 @@
+<%- include part/header.ejs %>
+
+<style>body{overflow:hidden;}</style>
+
+<div class="inner" style="margin-top:280px;text-align:center;">
+
+  <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+    api_key: 77ahallbpt1wik
+    onLoad: OnLinkedInFrameworkLoad
+    authorize: true
+  </script>
+
+  <script type="text/javascript">
+
+    function OnLinkedInFrameworkLoad() {
+      IN.Event.on(IN, "auth", OnLinkedInAuth);
+    }
+
+    function OnLinkedInAuth() {
+      IN.API.Profile("me").fields("firstName", "lastName", "industry", "location:(name)", "picture-url", "headline", "summary", "num-connections", "public-profile-url", "distance", "positions", "email-address", "educations", "date-of-birth")
+      .result(ShowProfileData);
+    }
+
+    function ShowProfileData(profiles) {
+      var member = profiles.values[0];
+      var skills = {
+        "name":member.firstName + " " + member.lastName, 
+        "companyName" : member.positions.values[0].company.name,
+        "jobTitle" : member.positions.values[0].title,
+        "location" : member.location.name,
+    };      
+
+    var jsonString = JSON.stringify(skills);
+    console.log(member);
+  }
+
+</script>
+
+<script type="in/Login"></script>
+
+<div class="inner">
+<div class="ui link cards">
+  <div class="card">
+    <div class="image">
+      <img src="/img/rob.jpg">
+    </div>
+    <div class="content">
+      <div class="header">John Jones</div>
+      <div class="meta">
+        <a>Age: 32</a>
+      </div>
+      <div class="description">
+        John is a game developer working on the latest Half Life game.
+      </div>
+    </div>
+    <div class="extra content">
+    <span class="right floated">
+        54%
+      </span>
+      <span>
+        <i class="user icon"></i>
+        University
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
+<%- include part/footer.ejs %>

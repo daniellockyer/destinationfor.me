@@ -1,0 +1,18 @@
+<%- include part/header.ejs %>
+
+<style>body{overflow:hidden;}</style>
+
+<div class="inner" style="margin-top:20px;">
+	<textarea id="cvarea" style="width:100%" rows="25"></textarea>
+	<button type="button" id="submit" class="btn btn-primary btn-lg">Submit</button>
+</div>
+
+<script>
+	$("#submit").click(function() {
+		$.post('http://localhost/postcv', { data: $("#cvarea").val() }, function(data) {
+			console.log(data);
+		});
+	});
+</script>
+
+<%- include part/footer.ejs %>
