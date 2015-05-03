@@ -22,7 +22,7 @@
     </header>
 
     <script>
-      $("#unsure").click(function() { window.location.redirect("/find");});
+      $("#unsure").click(function() { window.location.href= "/find";});
       $("h1").fitText(1.2, { minFontSize: '35px', maxFontSize: '65px' });
 
       var substringMatcher = function(strs) {
@@ -47,7 +47,7 @@
 
       $("#go").click(function() { 
         if(states.indexOf($("#search").val()) != -1) {
-          window.location.redirect("/people/"+ lookup[$("#search").val()]);
+          window.location.href = "/people/" + lookup[$("#search").val()];
         }
       });
        
