@@ -10,6 +10,7 @@ Chemistry
 Chinese
 Classics
 Computer Science
+Computing
 Dentistry
 Design
 Drama
@@ -32,6 +33,7 @@ Human Sciences
 ICT
 Law
 Linguistics
+Maths
 Mathematics
 Media Studies
 Medicine

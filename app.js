@@ -19,10 +19,8 @@ router.get('/', function(req, res) {
 
 	db.serialize(function() {
 		db.each("SELECT * FROM jobs", function(err, row) {
-	    	jobs.push(row.title);
-		}, function() {
-			res.render('home', { data: jobs }); 
-		});
+	    	jobs.push(row);
+		}, function() { res.render('home', { data: jobs }); });
 	});
 });
 router.get('/uni', function(req, res) { 
@@ -31,9 +29,7 @@ router.get('/uni', function(req, res) {
 	db.serialize(function() {
 		db.each("SELECT * FROM universities", function(err, row) {
 	    	unis.push(row);
-		}, function() {
-			res.render('unilist', { data: unis }); 
-		});
+		}, function() { res.render('unilist', { data: unis }); });
 	});
 });
 router.get('/uni/:id', function(req, res) { 
@@ -43,47 +39,77 @@ router.get('/uni/:id', function(req, res) {
 		});
 	});
 });
-router.get('/people', function(req, res) { res.render('people'); });
+router.get('/tables/:name', function(req, res) { 
+	var senduni;
+
+	db.serialize(function() {
+		db.each("SELECT * FROM jobs WHERE id="+req.params.name, function(err, job) {
+			senduni=job;		
+			senduni.pre = (/[aeiouAEIOU]/.test(job.title)) ? "an" : "a";
+		}, function() {
+			var count = 0;
+			db.each("SELECT * FROM universities ORDER BY RANDOM() LIMIT 10;", function(err, uni) {
+				senduni['table'+count] = (count + 1)+","+ (10-count)+",\""+ uni.title+"\","+ (120000-10000*count)+",\"&#8594;\"";
+				count++;
+			}, function() {
+				res.render('tables', {data : senduni});
+			});
+		});
+	});
+});  
+router.get('/people/:num', function(req, res) { 
+	var sendjob;
+
+	db.serialize(function() {
+		db.each("SELECT * FROM jobs WHERE id="+req.params.num, function(err, job) {		
+			sendjob = job;
+			sendjob.pre = (/[aeiouAEIOU]/.test(job.title)) ? "an" : "a";
+		}, function() {
+			db.each("SELECT * FROM companies ORDER BY RANDOM() LIMIT 1;", function(err, company) {		
+				sendjob.sponsor = company;
+			}, function() {
+				res.render('people', {data : sendjob}); 
+			});
+		});
+	});
+});
 router.get('/contribute', function(req, res) { res.render('contribute'); }); 
 router.get('/contribute/linkedin', function(req, res) { res.render('linkedin'); }); 
 router.get('/contribute/cv', function(req, res) { res.render('cv'); }); 
 router.get('/contribute/form', function(req, res) { res.render('form'); });  
-router.get('/tables', function(req, res) { res.render('tables'); });  
 router.get('/find', function(req, res) { res.render('find'); });  
-router.all('/postcv', function(req, res) {
+router.post('/postcv', function(req, res) {
 	var contentArray = req.body.data;
 	var myCourses = new sets.Set();
 	var myUniversities = new sets.Set();
 	var myJobs = new sets.Set();
 
 	contentArray = contentArray.replace(/[\n\r]/gm, " ");
-
-	console.log(contentArray);
 	
 	db.serialize(function() {
 		db.each("SELECT * FROM courses", function(err, row) {
 			var patt = new RegExp("\\s" + row.title + "[\\s,.:;!?]", "g");
 			if (patt.test(contentArray)) myCourses.add(row.title);
 		}, function() {
-			console.log(myCourses.array());
 
 			db.each("SELECT * FROM universities", function(err, row) {
 				var patt = new RegExp("\\s" + row.title + "[\\s,.:;!?]", "g");
 				if (patt.test(contentArray)) myUniversities.add(row.title);
 			}, function() {
-				console.log(myUniversities.array());
 
 				db.each("SELECT * FROM jobs", function(err, row) {
 					var patt = new RegExp("\\s" + row.title + "[\\s,.:;!?]", "g");
 					if (patt.test(contentArray)) myJobs.add(row.title);
 				}, function() {
-					console.log(myJobs.array());
 
 					res.send({courses: myCourses.array(), uni: myUniversities.array(), jobs: myJobs.array()});
 				});
 			});
 		});	
 	});
+});
+router.post('/postli', function(req, res) {
+
 });
 
 app.use(router);

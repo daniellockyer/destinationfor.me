@@ -3,29 +3,33 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.css" type="text/css">
 <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
-<div class="inner" style="margin-top:10px;">
-	<center><h3>Graduate based table for <strong>Game Developers</strong>.</h3></center>
+<div class="uni-header"><div class="wrapper">
+<div class="inner">
+
+<div class="header-text" style="font-size:34px;text-align:center;">
+    <span>The best <strong>universities</strong>  in the UK for becoming <%= data.pre %> <strong><%= data.title %></strong>.</span><br/>
+    <div style="width:70%;margin: 10px auto; height:34px;background:#fff87e;text-align:center;color:#111;vertical-align:center;">
+      <h3>The <strong>University of York</strong> sponsors this page.</h3>
+    </div>
 </div>
 
-<div class="inner" id="demo"></div>
+</div></div></div>
+
+<div class="inner" id="demo" style="margin-top:20px;"><table cellpadding="0" cellspacing="0" border="0" class="display" id="example"></table></div>
 
 <script>
-var dataSet = [
-    ['1','10','University of Southampton','£120,000','&#8594;'],
-    ['2','9','University of Warwick','£110,000','&#8594;'],
-    ['3','8','York University','£100,000','&#8594;'],
-    ['4','7','University of Cambridge','£90,000','&#8594;'],
-    ['6','6','Coventry University','£80,000','&#8594;'],
-    ['7','5','UCL','£70,000','&#8594;'],
-    ['8','4','Abertay University','£60,000','&#8594;'],
-    ['9','3','University of Birmingham','£50,000','&#8594;'],
-    ['9','2','University of Bristol','£40,000','&#8594;'],
-    ['10','1','Southampton Solent','£30,000','&#8594;']
-];
+var dataSet = [[<%- data.table0 %>], 
+                [<%- data.table1 %>],
+                [<%- data.table2 %>],
+                [<%- data.table3 %>],
+                [<%- data.table4 %>],
+                [<%- data.table5 %>],
+                [<%- data.table6 %>],
+                [<%- data.table7 %>],
+                [<%- data.table8 %>],
+                [<%- data.table9 %>]];
  
 $(document).ready(function() {
-    $('#demo').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="example"></table>' );
- 
     $('#example').dataTable( {
         "data": dataSet,
         "columns": [

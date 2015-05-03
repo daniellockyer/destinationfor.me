@@ -51,4 +51,14 @@ db.serialize(function() {
             db.run("INSERT INTO universities (title) VALUES (\""+line+"\");");
         }
     });
+
+    fs.readFile('data/companies.txt', 'utf8', function (err,data) {
+        if (err) return console.log(err);
+        var lines = data.split("\n");
+
+        for(i in lines) {
+            var line = lines[i];
+            db.run("INSERT INTO companies (name) VALUES (\""+line+"\");");
+        }
+    });
 });

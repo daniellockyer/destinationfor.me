@@ -2,15 +2,36 @@
 
 <style>body{overflow:hidden;}</style>
 
-<div class="inner" style="margin-top:20px;">
+<div class="inner" style="margin-top:60px;">
 	<textarea id="cvarea" style="width:100%" rows="25"></textarea>
 	<button type="button" id="submit" class="btn btn-primary btn-lg">Submit</button>
 </div>
 
 <script>
+	function obj2json(_data){
+    str = (($.type(_data)== 'array')?'[ ': '{ ');
+    first = true;
+    $.each(_data, function(i, v) { 
+        if(first != true)
+            str += ",";
+        else first = false;
+        if ($.type(v)== 'object' )
+            str += '"' + i + '":' + obj2json(v) ;
+        else if ($.type(v)== 'array')
+            str += '"' + i + '":' + obj2json(v) ;
+        else{
+            if($.type(_data)== 'array')
+                str += '"' + v + '"';
+            else
+                str +=  '"' + i + '":"' + v + '"';
+        }
+    });
+    return str+= (($.type(_data)== 'array')? ' ] ':' } ');;
+}
+
 	$("#submit").click(function() {
 		$.post('http://localhost/postcv', { data: $("#cvarea").val() }, function(data) {
-			console.log(data);
+			$("#cvarea").val(obj2json(data));
 		});
 	});
 </script>

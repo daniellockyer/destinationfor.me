@@ -9,7 +9,7 @@
                     <div class="input-group">
                       <input type="text" id="search" class="form-control" placeholder="I want to be a...">
                       <span class="input-group-btn">
-                        <button class="btn btn-default" id="go" type="button">Go</button>
+                        <button class="btn btn-default" id="go" type="button"><strong>GO</strong></button>
                       </span>
                     </div>
                   </div>
@@ -22,7 +22,6 @@
     </header>
 
     <script>
-      $("#go").click(function() { window.location.replace("/people");});
       $("#unsure").click(function() { window.location.replace("/find");});
       $("h1").fitText(1.2, { minFontSize: '35px', maxFontSize: '65px' });
 
@@ -38,8 +37,19 @@
       };
        
       var states = [<% data.forEach(function(d) { %>
-                      '<%= d %>',
+                      '<%= d.title %>',
                     <% }); %>];
+
+      var lookup = [];
+        <% data.forEach(function(d) { %>
+          lookup['<%= d.title %>']= <%= d.id %>;
+        <% }); %>;
+
+      $("#go").click(function() { 
+        if(states.indexOf($("#search").val()) != -1) {
+          window.location.redirect("/people/"+ lookup[$("#search").val()]);
+        }
+      });
        
       $('#search').typeahead({
         hint: true,

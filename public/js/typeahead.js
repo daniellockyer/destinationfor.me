@@ -1137,7 +1137,7 @@
                 },
                 menu: {
                     position: "absolute",
-                    top: "100%",
+                    top: "50px",
                     left: "0",
                     zIndex: "100",
                     display: "none"
