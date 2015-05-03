@@ -57,7 +57,7 @@ router.get('/tables/:name', function(req, res) {
 		});
 	});
 });  
-router.get('/people/:num', function(req, res) { 
+router.get('/routes/:num', function(req, res) { 
 	var sendjob;
 
 	db.serialize(function() {
@@ -73,6 +73,7 @@ router.get('/people/:num', function(req, res) {
 		});
 	});
 });
+router.get('/people', function(req, res) { res.render('people'); });
 router.get('/contribute', function(req, res) { res.render('contribute'); }); 
 router.get('/contribute/linkedin', function(req, res) { res.render('linkedin'); }); 
 router.get('/contribute/cv', function(req, res) { res.render('cv'); }); 

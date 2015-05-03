@@ -1,0 +1,88 @@
+<%- include part/header.ejs %>
+
+<div class="inner" style="margin-top:60px;height:110px;background:#FFEE33;padding:2px;text-align:center;">
+    <h2><strong><a href="http://www.teslamotors.com/">Tesla</a></strong> wants you to know about becoming <%= data.pre %> <strong><%= data.title %></strong>...</h2>
+    <h4>They are always on the lookout for people to work with them. Head over to <a href="http://www.teslamotors.com/careers">their website</a> to check out what is available.</h4>
+</div>
+
+<div class="inner" style="margin-top:15px;">
+<div class="ui link cards" style="margin-left:auto;margin-right:auto;">
+  <div class="card">
+    <div class="image">
+      <img src="/img/ive.jpg">
+    </div>
+    <div class="content">
+      <div class="header">Jonathon Ive</div>
+      <div class="meta">
+        <a>Age: 48</a>
+      </div>
+      <div class="description">
+        Jonathon is an English designer and the Senior Vice President of Design at Apple. He oversees the Apple Industrial Design Group and also provides leadership and direction for Human Interface software teams across the company.
+      </div>
+    </div>
+    <div class="extra content">
+    <span class="right floated">
+        54%
+      </span>
+      <span>
+        <i class="user icon"></i>
+        University
+      </span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="image">
+      <img src="/img/jack.jpg">
+    </div>
+    <div class="content">
+      <div class="header">Jack Dorsey</div>
+      <div class="meta">
+        <span class="date">Age: 38</span>
+      </div>
+      <div class="description">
+        Jack Dorsey is an American computer programmer and businessman widely known as a co-founder of Twitter, and as the founder and CEO of Square, a mobile payments company.
+      </div>
+    </div>
+    <div class="extra content">
+    	<span class="right floated">
+        25%
+      </span>
+      <span>
+        <i class="user icon"></i>
+        Apprenticeship
+      </span>
+    </div>
+  </div>
+  <div class="card">
+    <div class="image">
+      <img src="/img/elon.jpg">
+    </div>
+    <div class="content">
+      <div class="header">Elon Musk</div>
+      <div class="meta">
+        <a>Age: 43</a>
+      </div>
+      <div class="description">
+        Elon Musk is a Canadian-American entrepreneur, engineer, inventor and investor. He is the CEO and CTO of SpaceX, CEO and product architect of Tesla Motors, and chairman of SolarCity. He is the founder of SpaceX and a cofounder of PayPal, Inc., Tesla Motors, and Zip2.
+      </div>
+    </div>
+    <div class="extra content">
+    <span class="right floated">
+        21%
+      </span>
+      <span>
+        <i class="user icon"></i>
+        Independent
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+
+<script type="text/javascript">
+    $(".card").click(function() {
+      window.location.href = "/tables/<%= data.id %>";
+    });
+    </script>
+
+<%- include part/footer.ejs %>
