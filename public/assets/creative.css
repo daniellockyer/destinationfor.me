@@ -96,6 +96,6 @@ body{webkit-tap-highlight-color:#222}
 	cursor: pointer;
 }
 
-.extra content {
-	color:#0033cc;
+.extra strong {
+  color: #0033cc;
 }
