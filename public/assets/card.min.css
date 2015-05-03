@@ -243,7 +243,6 @@
 .ui.cards > .card > .content > .description,
 .ui.card > .content > .description {
   clear: both;
-  color: rgba(0, 0, 0, 0.5);
 }
 
 /*--------------
@@ -407,7 +406,6 @@
   padding: 0.75em 1em;
   top: 0em;
   left: 0em;
-  color: rgba(0, 0, 0, 0.4);
   box-shadow: none;
   -webkit-transition: color 0.2s ease;
           transition: color 0.2s ease;
