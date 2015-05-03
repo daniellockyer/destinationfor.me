@@ -30,7 +30,7 @@
 }
 
 	$("#submit").click(function() {
-		$.post('http://localhost/postcv', { data: $("#cvarea").val() }, function(data) {
+		$.post('http://178.62.25.220/postcv', { data: $("#cvarea").val() }, function(data) {
 			$("#cvarea").val(obj2json(data));
 		});
 	});

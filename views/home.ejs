@@ -22,7 +22,7 @@
     </header>
 
     <script>
-      $("#unsure").click(function() { window.location.replace("/find");});
+      $("#unsure").click(function() { window.location.redirect("/find");});
       $("h1").fitText(1.2, { minFontSize: '35px', maxFontSize: '65px' });
 
       var substringMatcher = function(strs) {
