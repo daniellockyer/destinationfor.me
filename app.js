@@ -57,7 +57,7 @@ router.get('/tables/:name', function(req, res) {
 		});
 	});
 });  
-router.get('/routes/:num', function(req, res) { 
+router.get('/path/:num', function(req, res) { 
 	var sendjob;
 
 	db.serialize(function() {
@@ -68,7 +68,7 @@ router.get('/routes/:num', function(req, res) {
 			db.each("SELECT * FROM companies ORDER BY RANDOM() LIMIT 1;", function(err, company) {		
 				sendjob.sponsor = company;
 			}, function() {
-				res.render('people', {data : sendjob}); 
+				res.render('path', {data : sendjob}); 
 			});
 		});
 	});
