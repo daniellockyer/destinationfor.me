@@ -49,7 +49,7 @@ router.get('/tables/:name', function(req, res) {
 		}, function() {
 			var count = 0;
 			db.each("SELECT * FROM universities ORDER BY RANDOM() LIMIT 10;", function(err, uni) {
-				senduni['table'+count] = (count + 1)+","+ (10-count)+",\""+ uni.title+"\","+ (120000-10000*count)+",\"<a href='/people'\"'>People who did this course.</a>\"";
+				senduni['table'+count] = (count + 1)+","+ (10-count)+",\""+ uni.title+"\","+ (120000-10000*count)+",\"<a href='/people>People who did this course.</a>\"";
 				count++;
 			}, function() {
 				res.render('tables', {data : senduni});
